@@ -13,7 +13,19 @@
 % uses Bangla digits for counters (chapters, pages, equations, refs).
 %--------------------------------------------------------------------
 \usepackage{latexbangla}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}  % clear default header and footer
 
+% Chapter name only, without "অধ্যায় ১"
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+
+% Even pages: book name, odd pages: chapter name
+\fancyhead[L]{\ifodd\value{page}\else\thetitle\fi}
+  \fancyhead[R]{\ifodd\value{page}\leftmark\fi}
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt} 
 % Kalpurush files bundled with the project (kalpurush.ttf, Kalpurush-Italic.ttf)
 \setbanglamainfont{kalpurush}[
   Path=./,
@@ -85,19 +97,22 @@
   {\color{gray}\epigraph{#1}{#2}}%
 }
 
+% vertical spacing between paragraphs
+\setlength{\parskip}{0.5em}
+
 \frenchspacing
 \tolerance=5000
 
 %--------------------------------------------------------------------
 % Title
 %--------------------------------------------------------------------
-\title{জ্যোতির্বিজ্ঞানের ইতিহাস}
-\author{  লেখক: এন্টন পেনাকোপ\\[5em]
-  অনুবাদ  \\[1em]আতিকুর রহমান ‌‌ ‌‌‌‌\\[1em]
-     আব্দুস সামী আকন্দ}
+\title{ইতিহাসে‌‌ জ্যোতির্বিজ্ঞান}
+
+\author{  \textbf{লেখক}\\ এন্টন পেনাকোপ\\[5em]
+  \textbf{অনুবাদক} \\[1em]আতিকুর রহমান\\মোঃ আব্দুস সামী আকন্দ ‌‌}
 \date{}
 
-\pretitle{\centering\Huge\bfseries}
+\pretitle{\centering\fontsize{70}{50}\selectfont}
 \posttitle{\par\vskip 1em\normalfont}
 \preauthor{\centering\Large}
 \postauthor{\par\vskip 1em\normalfont}
@@ -109,21 +124,23 @@
 
 \thispagestyle{plain}
 \begin{center}
-\Large{Abstract}
+% \Large{Abstract}
 \end{center}
 \vspace{1.5cm}
-\lipsum[1]
+% \lipsum[1]
 
 \newpage
-\epigraph{``\textit{বল মহাবিশ্বের মহাকাশ ফাড়ি’\\
-চন্দ্র সূর্য গ্রহ তারা ছাড়ি’\\
-ভূলোক দ্যুলোক গোলক ভেদিয়া\\
-খোদার আসন ‘আরশ’ ছেদিয়া,\\
-উঠিয়াছি চির-বিস্ময় আমি বিশ্ববিধাতৃর}''}{\textit{নজরুল}}
+% \epigraph{``\textit{বল মহাবিশ্বের মহাকাশ ফাড়ি’\\
+% চন্দ্র সূর্য গ্রহ তারা ছাড়ি’\\
+% ভূলোক দ্যুলোক গোলক ভেদিয়া\\
+% খোদার আসন ‘আরশ’ ছেদিয়া,\\
+% উঠিয়াছি চির-বিস্ময় আমি বিশ্ববিধাতৃর}''}{\textit{নজরুল}}
 \tableofcontents
+\part{প্রাচীনকালের জ্যোতির্বিজ্ঞান}
 
 \include{chapter/ch1}
 \include{chapter/ch2}
 ‌\include{chapter/ch3}
+‌\include{chapter/ch4}
 
 \end{document}
