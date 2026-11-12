@@ -1,0 +1,134 @@
+%----------------
+% !TEX program = xelatex
+% Requires LaTeXbangla 2.x (TeX Live 2024+ / current MiKTeX)
+
+\documentclass[letterpaper,oneside,openany,12pt]{book}
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+% (geometry removed: it conflicted with typearea, which overrode it anyway)
+
+%--------------------------------------------------------------------
+% Bangla: LaTeXbangla loads fontspec + polyglossia, makes Bangla the
+% default language, switches Bangla/English fonts automatically, and
+% uses Bangla digits for counters (chapters, pages, equations, refs).
+%--------------------------------------------------------------------
+\usepackage{latexbangla}
+
+% Kalpurush files bundled with the project (kalpurush.ttf, Kalpurush-Italic.ttf)
+\setbanglamainfont{kalpurush}[
+  Path=./,
+  Extension=.ttf,
+  UprightFont=kalpurush,
+  ItalicFont=Kalpurush-Italic
+]
+% If Kalpurush is installed system-wide, this one line is enough instead:
+% \setbanglamainfont{Kalpurush}
+
+% Optional English font (otherwise Latin Modern):
+% \setmainfont{...}
+
+% Old helpers kept as aliases so existing chapters still compile.
+% They are no longer needed in new text: just type Bangla directly.
+\newcommand{\bn}[1]{#1}
+\newcommand{\bnit}[1]{\textit{#1}}
+
+%--------------------------------------------------------------------
+% Packages
+%--------------------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{lastpage}
+\usepackage{epigraph}
+\usepackage{makeidx}
+\usepackage{titling}   % control \maketitle formatting
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{xspace}
+\usepackage[skins]{tcolorbox}
+\usepackage{rotating}
+\usepackage{amsmath,amstext,amssymb}
+\usepackage{enumitem}
+\usepackage[mathscr]{eucal}
+\usepackage{aas_macros}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{listings}
+\usepackage{siunitx}
+\usepackage{lipsum}
+\usepackage[square, numbers, comma, sort&compress, sectionbib]{natbib}
+\usepackage{chapterbib}
+\usepackage{quotchap}
+\usepackage[backref=section, breaklinks, plainpages=false, colorlinks=true,
+  anchorcolor=cyan, linkcolor=cyan, citecolor=cyan, filecolor=magenta,
+  urlcolor=magenta, linktoc=all]{hyperref}
+
+%--------------------------------------------------------------------
+% Dialogue environments for the characters
+%--------------------------------------------------------------------
+\newcommand{\dialoguespeaker}[1]{%
+  \par\medskip
+  \noindent\textbf{#1:}\enspace
+}
+\newenvironment{rafi}{\dialoguespeaker{রাফি}}{\par\medskip}
+\newenvironment{mitu}{\dialoguespeaker{মিতু}}{\par\medskip}
+\newenvironment{jinn}{\dialoguespeaker{জিন ভাই}}{\par\medskip}
+\newenvironment{farzana}{\dialoguespeaker{ফারজানা ম্যাম}}{\par\medskip}
+
+%--------------------------------------------------------------------
+% Units used in the Introduction
+%--------------------------------------------------------------------
+\DeclareSIUnit{\Msun}{\ensuremath{M_\odot}}
+\DeclareSIUnit{\gauss}{G}
+\DeclareSIUnit{\parsec}{pc}
+\DeclareSIUnit{\yr}{yr}
+\DeclareSIUnit{\years}{yr}
+
+%--------------------------------------------------------------------
+% Chapter numbers (quotchap): large grey Bangla digits
+%--------------------------------------------------------------------
+\renewcommand*{\chapnumfont}{\fontsize{100}{130}\selectfont\color{chaptergrey}}
+
+% Grey epigraph
+\newcommand{\grayepigraph}[2]{%
+  {\color{gray}\epigraph{#1}{#2}}%
+}
+
+\frenchspacing
+\tolerance=5000
+
+%--------------------------------------------------------------------
+% Title
+%--------------------------------------------------------------------
+\title{জ্যোতির্বিজ্ঞানের ইতিহাস}
+\author{আতিকুর রহমান}
+\date{}
+
+\pretitle{\centering\Huge\bfseries}
+\posttitle{\par\vskip 1em\normalfont}
+\preauthor{\centering\Large}
+\postauthor{\par\vskip 1em\normalfont}
+\predate{\centering\large}
+\postdate{\par\vskip 2em\normalfont}
+
+\begin{document}
+\maketitle
+
+\thispagestyle{plain}
+\begin{center}
+\Large{Abstract}
+\end{center}
+\vspace{1.5cm}
+\lipsum[1]
+
+\newpage
+\epigraph{``\textit{বল মহাবিশ্বের মহাকাশ ফাড়ি’\\
+চন্দ্র সূর্য গ্রহ তারা ছাড়ি’\\
+ভূলোক দ্যুলোক গোলক ভেদিয়া\\
+খোদার আসন ‘আরশ’ ছেদিয়া,\\
+উঠিয়াছি চির-বিস্ময় আমি বিশ্ববিধাতৃর}''}{\textit{নজরুল}}
+\tableofcontents
+
+% \include{chapters/ch0}
+% \include{chapters/ch1}
+% \include{chapters/ch2}
+
+\end{document}
